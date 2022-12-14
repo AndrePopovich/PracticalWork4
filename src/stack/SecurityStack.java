@@ -1,32 +1,37 @@
 package stack;
 
 
+import static ui.Colors.CYAN;
+import static ui.Colors.GREEN;
+import static ui.Colors.RED;
+
 import java.util.ArrayList;
 
 public class SecurityStack<T> implements Stack<T> {
-
   ArrayList<T> list = new ArrayList<>();
 
   @Override
   public void push(T item) {
     list.add(item);
-    System.out.println("ok");
+    System.out.println(GREEN + "ok");
   }
 
   @Override
-  public void pop() {
+  public T pop() {
     if (list.isEmpty()) {
-      System.out.println("error");
+      System.out.println(RED + "error");
+      return null;
     } else {
       int index = list.size() - 1;
-      list.remove(index);
+      System.out.println(list.get(index));
+      return list.remove(index);
     }
   }
 
   @Override
   public T back() {
     if (list.isEmpty()) {
-      System.out.println("error");
+      System.out.println(RED + "error");
       return null;
     } else {
       int index = list.size() - 1;
@@ -42,12 +47,12 @@ public class SecurityStack<T> implements Stack<T> {
   @Override
   public void clear() {
     list.clear();
-    System.out.println("ok");
+    System.out.println(GREEN + "ok");
   }
 
   @Override
   public void exit() {
-    System.out.println("bye");
+    System.out.println(CYAN + "bye");
     System.exit(0);
   }
 }
