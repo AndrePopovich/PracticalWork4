@@ -1,4 +1,4 @@
-package ui;
+package com.andre.ui;
 
 public class Colors {
 

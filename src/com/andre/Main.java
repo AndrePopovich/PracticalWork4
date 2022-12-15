@@ -1,4 +1,6 @@
-import ui.Menu;
+package com.andre;
+
+import com.andre.ui.Menu;
 
 public class Main {
 

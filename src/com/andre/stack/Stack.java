@@ -1,4 +1,4 @@
-package stack;
+package com.andre.stack;
 
 public interface Stack<T> {
   void push(T item);
@@ -7,5 +7,6 @@ public interface Stack<T> {
   int size();
   void clear();
   void exit();
+  boolean isEmpty();
 
 }

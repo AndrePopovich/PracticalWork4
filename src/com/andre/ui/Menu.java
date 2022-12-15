@@ -1,16 +1,19 @@
-package ui;
+package com.andre.ui;
 
-import static ui.Colors.CYAN;
-import static ui.Colors.GREEN;
-import static ui.Colors.PURPLE;
-import static ui.Colors.RED;
-import static ui.Colors.YELLOW;
+import static com.andre.ui.Colors.CYAN;
+import static com.andre.ui.Colors.GREEN;
+import static com.andre.ui.Colors.PURPLE;
+import static com.andre.ui.Colors.RED;
+import static com.andre.ui.Colors.YELLOW;
 
+import com.andre.queue.SecurityQueue;
+import com.andre.stack.SecurityStack;
 import java.util.Scanner;
-import stack.SecurityStack;
 
 public class Menu {
 
+  private SecurityStack<Integer> stack = new SecurityStack<>();
+  private SecurityQueue<Integer> queue = new SecurityQueue<>();
   private Scanner s = new Scanner(System.in);
   private String select;
 
@@ -29,6 +32,7 @@ public class Menu {
       case "2":
         break;
       case "3":
+        queueData();
         break;
       case "4":
         System.out.println(GREEN + "Ви вийшли з програми!!!");
@@ -42,7 +46,6 @@ public class Menu {
   }
 
   public void stackData() {
-    SecurityStack<Integer> stack = new SecurityStack<>();
     System.out.println(PURPLE + "\n***** Перелік команд *****" + YELLOW);
     System.out.println("push");
     System.out.println("pop");
@@ -78,6 +81,45 @@ public class Menu {
         System.out.println(RED + "Невірно введена команда!!!");
         break;
     }
-    menu();
+    stackData();
+  }
+
+  public void queueData() {
+    System.out.println(PURPLE + "\n***** Перелік команд *****" + YELLOW);
+    System.out.println("push");
+    System.out.println("pop");
+    System.out.println("front");
+    System.out.println("size");
+    System.out.println("clear");
+    System.out.println("exit");
+    System.out.print(CYAN + "Введіть одну з запропонованих команд: ");
+    select = s.nextLine();
+    switch (select) {
+      case "push":
+        Scanner s2 = new Scanner(System.in);
+        System.out.print(CYAN + "Введіть число, яке хочете додати: ");
+        int number = s2.nextInt();
+        queue.push(number);
+        break;
+      case "pop":
+        queue.pop();
+        break;
+      case "front":
+        queue.front();
+        break;
+      case "size":
+        System.out.println(queue.size());
+        break;
+      case "clear":
+        queue.clear();
+        break;
+      case "exit":
+        queue.exit();
+        break;
+      default:
+        System.out.println(RED + "Невірно введена команда!!!");
+        break;
+    }
+    queueData();
   }
 }

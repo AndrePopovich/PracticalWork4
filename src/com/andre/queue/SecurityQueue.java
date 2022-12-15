@@ -1,14 +1,15 @@
-package stack;
+package com.andre.queue;
 
+import static com.andre.ui.Colors.CYAN;
+import static com.andre.ui.Colors.GREEN;
+import static com.andre.ui.Colors.RED;
 
-import static ui.Colors.CYAN;
-import static ui.Colors.GREEN;
-import static ui.Colors.RED;
-
+import com.andre.ui.Menu;
 import java.util.ArrayList;
 
-public class SecurityStack<T> implements Stack<T> {
-  ArrayList<T> list = new ArrayList<>();
+public class SecurityQueue<T> implements Queue<T> {
+
+  private ArrayList<T> list = new ArrayList<>();
 
   @Override
   public void push(T item) {
@@ -22,20 +23,19 @@ public class SecurityStack<T> implements Stack<T> {
       System.out.println(RED + "error");
       return null;
     } else {
-      int index = list.size() - 1;
-      System.out.println(list.get(index));
-      return list.remove(index);
+      System.out.println(list.get(0));
+      return list.remove(0);
     }
   }
 
   @Override
-  public T back() {
-    if (list.isEmpty()) {
+  public T front() {
+    if (isEmpty()) {
       System.out.println(RED + "error");
       return null;
     } else {
-      int index = list.size() - 1;
-      return list.get(index);
+      System.out.println(list.get(0));
+      return list.get(0);
     }
   }
 
@@ -53,6 +53,12 @@ public class SecurityStack<T> implements Stack<T> {
   @Override
   public void exit() {
     System.out.println(CYAN + "bye");
-    System.exit(0);
+    Menu menu = new Menu();
+    menu.menu();
+  }
+
+  @Override
+  public boolean isEmpty() {
+    return list.isEmpty();
   }
 }
