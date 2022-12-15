@@ -2,13 +2,13 @@ package com.andre.deq;
 
 public interface Deq<T> {
 
-  void push_front(T item);
+  void pushFront(T item);
 
-  void push_back(T item);
+  void pushBack(T item);
 
-  T pop_front();
+  T popFront();
 
-  T pop_back();
+  T popBack();
 
   T front();
 
